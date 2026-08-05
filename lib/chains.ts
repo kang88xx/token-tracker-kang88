@@ -8,6 +8,8 @@ export interface ChainConfig {
   adapter: "moralis" | "solana" | "blockscout" | "tamsa";
   /** Moralis chain 파라미터 (EVM 전용) */
   moralisChain?: string;
+  /** Blockscout 인스턴스 base URL */
+  blockscoutBase?: string;
   /** 데모용 기본 토큰 (키 없이 동작하는 체인 위주) */
   demoToken?: { address: string; label: string };
 }
@@ -18,8 +20,8 @@ export const CHAINS: Record<ChainId, ChainConfig> = {
     name: "Ethereum",
     badge: "EVM",
     addressStyle: "evm",
-    adapter: "moralis",
-    moralisChain: "eth",
+    adapter: "blockscout",
+    blockscoutBase: "https://eth.blockscout.com",
     demoToken: {
       address: "0x514910771AF9Ca656af840dff83E8264EcF986CA",
       label: "LINK",
@@ -54,6 +56,7 @@ export const CHAINS: Record<ChainId, ChainConfig> = {
     badge: "EVM L2",
     addressStyle: "evm",
     adapter: "blockscout",
+    blockscoutBase: "https://robinhoodchain.blockscout.com",
     demoToken: {
       address: "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
       label: "USDG",

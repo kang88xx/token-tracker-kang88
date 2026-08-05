@@ -317,6 +317,8 @@ export default function Page() {
                       {data.token.priceChange24h.toFixed(1)}%
                     </span>
                   </>
+                ) : data?.token.priceUsd != null ? (
+                  "SPOT PRICE"
                 ) : (
                   <span className="ko">가격 데이터 없음</span>
                 )}
@@ -667,13 +669,13 @@ export default function Page() {
               <h5>Data</h5>
               <ul>
                 <li>
-                  Moralis <span className="mono-sub">ETH · BNB</span>
+                  Blockscout <span className="mono-sub">ETH · ROBINHOOD</span>
+                </li>
+                <li>
+                  Moralis <span className="mono-sub">BNB</span>
                 </li>
                 <li>
                   Solana RPC + Jupiter <span className="mono-sub">SOL</span>
-                </li>
-                <li>
-                  Blockscout <span className="mono-sub">Robinhood</span>
                 </li>
                 <li>
                   TAMSA <span className="mono-sub">Xphere</span>

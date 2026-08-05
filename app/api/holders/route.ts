@@ -81,7 +81,7 @@ export async function GET(req: NextRequest) {
           case "moralis":
             return fetchMoralisHolders(chain.id, chain.moralisChain!, addressParam);
           case "blockscout":
-            return fetchBlockscoutHolders(addressParam);
+            return fetchBlockscoutHolders(chain.id, chain.blockscoutBase!, addressParam);
           case "tamsa":
             return fetchTamsaHolders(addressParam);
           case "solana":

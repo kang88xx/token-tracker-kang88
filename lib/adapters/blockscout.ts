@@ -1,7 +1,5 @@
-import { AdapterError, type HolderRow, type HoldersResult } from "../types";
+import { AdapterError, type ChainId, type HolderRow, type HoldersResult } from "../types";
 import { burnTag, fetchJson, formatUnits, pctFromRaw, safeDecimals } from "../util";
-
-const BASE = "https://robinhoodchain.blockscout.com/api/v2";
 
 interface BsHolderItem {
   address: { hash: string; is_contract: boolean; name: string | null };
@@ -20,7 +18,12 @@ interface BsToken {
   exchange_rate: string | null;
 }
 
-export async function fetchBlockscoutHolders(address: string): Promise<HoldersResult> {
+export async function fetchBlockscoutHolders(
+  chain: ChainId,
+  baseUrl: string,
+  address: string,
+): Promise<HoldersResult> {
+  const BASE = `${baseUrl}/api/v2`;
   const tokenRes = await fetchJson<BsToken & { message?: string }>(`${BASE}/tokens/${address}`);
   if (tokenRes.status === 429) {
     throw new AdapterError("RATE_LIMITED", "Blockscout 호출 한도 초과 — 잠시 후 다시 시도해주세요.");
@@ -29,7 +32,7 @@ export async function fetchBlockscoutHolders(address: string): Promise<HoldersRe
     throw new AdapterError("UPSTREAM_ERROR", `Blockscout 서버 오류 (HTTP ${tokenRes.status})`);
   }
   if (tokenRes.status === 404 || !tokenRes.body || !tokenRes.body.symbol) {
-    throw new AdapterError("TOKEN_NOT_FOUND", "Robinhood Chain에서 해당 토큰을 찾지 못했습니다.");
+    throw new AdapterError("TOKEN_NOT_FOUND", "해당 체인에서 토큰을 찾지 못했습니다. 컨트랙트 주소를 확인해주세요.");
   }
   const meta = tokenRes.body;
   const decimals = safeDecimals(meta.decimals);
@@ -82,7 +85,7 @@ export async function fetchBlockscoutHolders(address: string): Promise<HoldersRe
 
   return {
     token: {
-      chain: "rhc",
+      chain,
       address,
       name: meta.name ?? "Unknown",
       symbol: meta.symbol ?? "?",
