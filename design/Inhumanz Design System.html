@@ -1,0 +1,1064 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Inhumanz — Design System v1.0</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Questrial&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+
+<link rel="stylesheet" href="inhumanz-system.css" />
+</head>
+<body>
+
+<!-- Reusable inline logo symbol — a stylized "i" form -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="inh-symbol" viewBox="0 0 100 100">
+      <rect x="38" y="38" width="24" height="56" rx="12" class="symbol-fill"/>
+      <circle cx="50" cy="16" r="12" class="symbol-fill"/>
+    </symbol>
+    <symbol id="inh-symbol-ring" viewBox="0 0 100 100">
+      <!-- alternate: a ring with a cut, signifying broken boundary -->
+      <circle cx="50" cy="50" r="38" fill="none" stroke-width="14" class="symbol-stroke"/>
+      <rect x="48" y="0" width="38" height="14" class="symbol-fill"/>
+    </symbol>
+    <symbol id="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12 L10 17 L19 7"/>
+    </symbol>
+    <symbol id="cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 6 L18 18 M18 6 L6 18"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- PAGE RAIL CHROME -->
+<div class="page-rail">
+  <div><span class="dot"></span>BRAND SYSTEM · v1.0</div>
+  <div class="c">INHUMANZ · No boundaries. Only possibilities.</div>
+  <div class="r">MAY 2026 · GUIDE FOR LOGO PROPOSAL</div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="h-inner">
+    <div class="crumb">
+      <div>System / v 1.0</div>
+      <div>LOGO PROPOSAL · APPLICATION · GUIDELINE</div>
+      <div>09 SECTIONS</div>
+    </div>
+    <h1>
+      No <span class="pp">boundaries</span>.<br/>
+      Only <span class="ac">possibilities</span>.
+    </h1>
+    <div class="h-tag">Inhumanz Brand Design System — built from the Brand Guide 1.0 for use in identity, proposal, and application work.</div>
+    <div class="h-sub">
+      <div><div class="lbl">Brand</div><div class="val">Inhumanz</div></div>
+      <div><div class="lbl">Typography</div><div class="val">Questrial · Poppins · Pretendard</div></div>
+      <div><div class="lbl">Core Colors</div><div class="val">Black · Purple · Sky · Lime</div></div>
+      <div><div class="lbl">Use case</div><div class="val">Logo 시안 제안서 양식</div></div>
+    </div>
+  </div>
+</section>
+
+<main>
+
+<!-- =========================================================
+     01 FOUNDATION
+     ========================================================= -->
+<section class="ds" id="foundation">
+  <div class="eyebrow">
+    <span class="num">01</span>
+    <span class="label">Foundation</span>
+    <span class="rule"></span>
+    <span class="label">Identity · Voice · Signature</span>
+  </div>
+  <h2 class="ds-title">Brand foundation</h2>
+  <p class="ds-lede">Inhumanz는 한계를 넘어선 가능성을 다루는 브랜드입니다. <strong>"No boundaries. Only possibilities."</strong>라는 슬로건처럼, 브랜드 시스템은 절제된 검정 위에서 보라·하늘·라임 컬러가 분명한 의도로 등장하도록 설계되었습니다. 차분한 기하학과 강한 액센트의 대비가 브랜드의 시각적 DNA입니다.</p>
+
+  <!-- Signature logo presentation -->
+  <h3 class="ds-h3">Signature Logo</h3>
+  <div class="row">
+    <div class="c-6">
+      <div class="logo-tile">
+        <div class="tag-row">
+          <span>01 / Signature · Light</span>
+          <span>#FFFFFF GROUND</span>
+        </div>
+        <div class="logo dark" style="font-size: 88px;">
+          <span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span>
+          <span class="word">inhumanz</span>
+        </div>
+      </div>
+    </div>
+    <div class="c-6">
+      <div class="logo-tile black">
+        <div class="tag-row">
+          <span>02 / Signature · Dark</span>
+          <span>#000F19 GROUND</span>
+        </div>
+        <div class="logo light" style="font-size: 88px;">
+          <span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span>
+          <span class="word">inhumanz</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top: var(--s-4); font-size: var(--t-sm); color: var(--gray-600); max-width: 80ch; line-height: 1.6;">
+    Signature Logo는 심볼과 워드마크가 결합된 기본형 로고입니다. 브랜드를 정확하게 전달하기 위해, 글자만 분리해서 사용하거나 색·크기·간격을 임의로 변경하지 않고 지정된 형태 그대로 사용합니다. <em style="color: var(--human-purple); font-style: normal;">(※ 위 심볼은 자리표시자입니다 — 최종 적용 시 실제 Inhumanz 심볼 SVG로 교체하세요.)</em>
+  </p>
+
+  <!-- Brand voice + pillar pills -->
+  <h3 class="ds-h3">Brand voice · 키워드</h3>
+  <div style="background: var(--human-black); padding: var(--s-8); display: flex; justify-content: space-between; align-items: center; gap: var(--s-6); flex-wrap: wrap; position: relative; overflow: hidden;">
+    <div style="position:absolute; inset:0; background: radial-gradient(50% 50% at 80% 30%, rgba(102,77,255,.4), transparent 70%);"></div>
+    <div style="color: #fff; font-family: var(--font-display); font-weight: 400; font-size: var(--t-4xl); letter-spacing: -.025em; line-height: 1.05; max-width: 22ch; position: relative;">
+      Inhumanz is a brand of <span style="color: var(--lime-500);">limitless</span> possibilities.
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-end; position: relative;">
+      <span class="pill outline-light">Boundary-breaking</span>
+      <span class="pill lime">Possibility</span>
+      <span class="pill outline-light">Geometric · Tech</span>
+      <span class="pill outline-light">Confident</span>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     02 LOGO SYSTEM
+     ========================================================= -->
+<section class="ds" id="logo-system">
+  <div class="eyebrow"><span class="num">02</span><span class="label">Logo System</span><span class="rule"></span><span class="label">Signature · Symbol · Variants</span></div>
+  <h2 class="ds-title">Logo system</h2>
+  <p class="ds-lede">로고는 <strong>Signature Logo</strong>(심볼+글자)와 <strong>Symbol Logo</strong>(심볼 단독)의 두 가지 형태로 운영됩니다. 두 로고 모두 지정된 컬러와 형태의 변형 없이 그대로 사용해야 하며, 충분한 여백(clear space)과 최소 크기(min-size)를 항상 지켜야 합니다.</p>
+
+  <!-- Black & White variants -->
+  <h3 class="ds-h3">Black &amp; White / Mono</h3>
+  <div class="row">
+    <div class="c-3">
+      <div class="logo-tile">
+        <div class="tag-row"><span>Black on White</span><span>POSITIVE</span></div>
+        <div class="logo dark" style="font-size: 44px;">
+          <span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span>
+          <span class="word">inhumanz</span>
+        </div>
+      </div>
+    </div>
+    <div class="c-3">
+      <div class="logo-tile black">
+        <div class="tag-row"><span>White on Black</span><span>NEGATIVE</span></div>
+        <div class="logo light" style="font-size: 44px;">
+          <span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span>
+          <span class="word">inhumanz</span>
+        </div>
+      </div>
+    </div>
+    <div class="c-3">
+      <div class="logo-tile gray">
+        <div class="tag-row"><span>Black on Gray</span><span>SOFT</span></div>
+        <div class="logo dark" style="font-size: 44px;">
+          <span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span>
+          <span class="word">inhumanz</span>
+        </div>
+      </div>
+    </div>
+    <div class="c-3">
+      <div class="logo-tile" style="background: var(--human-purple);">
+        <div class="tag-row" style="color: rgba(255,255,255,.7);"><span>White on Purple</span><span>BRAND</span></div>
+        <div class="logo light" style="font-size: 44px;">
+          <span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span>
+          <span class="word">inhumanz</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Clear space -->
+  <h3 class="ds-h3">Clear space · 여백 규정</h3>
+  <div class="row">
+    <div class="c-7">
+      <div class="clearspace">
+        <div class="cs-stage">
+          <div class="cs-outer">
+            <span class="cs-label top">x</span>
+            <span class="cs-label bottom">x</span>
+            <span class="cs-label left">x</span>
+            <span class="cs-label right">x</span>
+            <span class="cs-corner tl"></span>
+            <span class="cs-corner tr"></span>
+            <span class="cs-corner bl"></span>
+            <span class="cs-corner br"></span>
+          </div>
+          <div class="cs-bounds"></div>
+          <div class="logo dark" style="font-size: 56px;">
+            <span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span>
+            <span class="word">inhumanz</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="c-5">
+      <div class="demo" style="height: 100%;">
+        <div class="demo-caption"><span>Clear space rules</span><span>BRAND GUIDE 1.0</span></div>
+        <div style="display: grid; gap: var(--s-4);">
+          <div>
+            <div class="t-eyebrow" style="margin-bottom: 6px;">Signature Logo</div>
+            <div style="font-size: var(--t-sm); color: var(--gray-700); line-height: 1.6;">로고 사방 <strong>1x</strong> 만큼의 여백을 확보합니다. (1x = 심볼 너비) 어떤 그래픽·문자 요소도 이 영역을 침범하지 않습니다.</div>
+          </div>
+          <hr/>
+          <div>
+            <div class="t-eyebrow" style="margin-bottom: 6px;">Symbol Logo</div>
+            <div style="font-size: var(--t-sm); color: var(--gray-700); line-height: 1.6;">심볼 단독 사용 시 사방 <strong>0.5x</strong> 여백을 적용합니다. 상하 0.5x, 좌우 1x로 비대칭 규정.</div>
+          </div>
+          <hr/>
+          <div>
+            <div class="t-eyebrow" style="margin-bottom: 6px;">Note</div>
+            <div style="font-size: var(--t-sm); color: var(--gray-700); line-height: 1.6;">x는 항상 현재 사용 중인 로고 크기의 심볼 너비를 기준으로 환산합니다.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Minimum size -->
+  <h3 class="ds-h3">Minimum size · 최소 크기</h3>
+  <div class="minsize">
+    <div class="ms-item">
+      <div class="logo dark" style="font-size: 64px;">
+        <span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span>
+        <span class="word">inhumanz</span>
+      </div>
+      <div class="ms-label">DESKTOP · 64 px</div>
+    </div>
+    <div class="ms-item">
+      <div class="logo dark" style="font-size: 32px;">
+        <span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span>
+        <span class="word">inhumanz</span>
+      </div>
+      <div class="ms-label">WEB · 32 px</div>
+    </div>
+    <div class="ms-item">
+      <div class="logo dark" style="font-size: 20px;">
+        <span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span>
+        <span class="word">inhumanz</span>
+      </div>
+      <div class="ms-label">MOBILE · 20 px</div>
+    </div>
+    <div class="ms-item">
+      <div class="logo dark" style="font-size: 14px;">
+        <span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span>
+        <span class="word">inhumanz</span>
+      </div>
+      <div class="ms-label">FAVICON · 14 px (MIN)</div>
+    </div>
+  </div>
+
+  <!-- Symbol-only variants -->
+  <h3 class="ds-h3">Symbol Logo · 단독 사용</h3>
+  <div class="compare-strip">
+    <div class="cell">
+      <span class="lbl" style="color: var(--gray-500);">BLACK</span>
+      <div class="logo dark"><span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span></div>
+    </div>
+    <div class="cell" style="background: var(--human-black);">
+      <span class="lbl" style="color: rgba(255,255,255,.6);">WHITE</span>
+      <div class="logo light"><span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span></div>
+    </div>
+    <div class="cell" style="background: var(--human-purple);">
+      <span class="lbl" style="color: rgba(255,255,255,.7);">PURPLE</span>
+      <div class="logo light"><span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span></div>
+    </div>
+    <div class="cell" style="background: var(--lime-500);">
+      <span class="lbl" style="color: rgba(0,15,25,.6);">LIME</span>
+      <div class="logo dark"><span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span></div>
+    </div>
+  </div>
+
+  <!-- Do / Don't -->
+  <h3 class="ds-h3">Do / Don't · 금지 사항</h3>
+  <div class="dodont">
+    <div class="cell yes">
+      <div class="preview">
+        <div class="logo dark"><span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span><span class="word">inhumanz</span></div>
+      </div>
+      <div class="desc">
+        <span class="mark"><svg><use href="#check"/></svg></span>
+        지정된 형태와 비율 그대로 사용합니다.
+      </div>
+    </div>
+    <div class="cell no">
+      <div class="preview">
+        <div class="logo dark" style="transform: scaleX(1.4);"><span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span><span class="word">inhumanz</span></div>
+      </div>
+      <div class="desc">
+        <span class="mark"><svg><use href="#cross"/></svg></span>
+        가로/세로로 임의 변형하지 않습니다.
+      </div>
+    </div>
+    <div class="cell no">
+      <div class="preview">
+        <div class="logo" style="color: #FF3D5A; font-size: 44px;"><span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span><span class="word">inhumanz</span></div>
+      </div>
+      <div class="desc">
+        <span class="mark"><svg><use href="#cross"/></svg></span>
+        지정 컬러 외 임의 컬러를 적용하지 않습니다.
+      </div>
+    </div>
+    <div class="cell no">
+      <div class="preview">
+        <div class="logo dark" style="transform: rotate(-12deg);"><span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span><span class="word">inhumanz</span></div>
+      </div>
+      <div class="desc">
+        <span class="mark"><svg><use href="#cross"/></svg></span>
+        회전하거나 기울이지 않습니다.
+      </div>
+    </div>
+    <div class="cell no">
+      <div class="preview">
+        <div class="logo dark" style="letter-spacing: .2em;"><span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span><span class="word">inhumanz</span></div>
+      </div>
+      <div class="desc">
+        <span class="mark"><svg><use href="#cross"/></svg></span>
+        자간·간격을 임의로 조정하지 않습니다.
+      </div>
+    </div>
+    <div class="cell no">
+      <div class="preview" style="background: repeating-linear-gradient(45deg, #ccc 0 8px, #fff 8px 16px);">
+        <div class="logo dark"><span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span><span class="word">inhumanz</span></div>
+      </div>
+      <div class="desc">
+        <span class="mark"><svg><use href="#cross"/></svg></span>
+        가독성이 떨어지는 배경 위에 놓지 않습니다.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     03 COLOR
+     ========================================================= -->
+<section class="ds" id="color">
+  <div class="eyebrow"><span class="num">03</span><span class="label">Color</span><span class="rule"></span><span class="label">Black core · Purple signature · Lime accent</span></div>
+  <h2 class="ds-title">Color system</h2>
+  <p class="ds-lede">팔레트의 중심은 <strong>human black (#000F19)</strong>입니다. <strong>human purple</strong>은 시그니처 액센트로, <strong>sky blue</strong>는 보조 컬러로, <strong>greenblue (lime)</strong>는 단 한 곳, 가장 주목해야 할 곳에만 사용합니다. 그레이는 본문과 페이지 배경에서 침묵의 역할을 합니다.</p>
+
+  <!-- Brand Guide palette — exact PDF values -->
+  <h3 class="ds-h3">Brand colors · Brand Guide 1.0</h3>
+  <div class="swatches row5">
+    <div class="sw">
+      <div class="sw-chip" style="background: var(--human-black);"></div>
+      <div class="sw-meta">
+        <div class="sw-name">human black</div>
+        <div class="sw-hex">#000F19</div>
+        <div class="sw-cmyk">C100 M40 Y0 K90</div>
+        <div class="sw-rgb">R0 G25 B25</div>
+        <div class="sw-role">Primary surface</div>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="sw-chip" style="background: var(--human-purple);"></div>
+      <div class="sw-meta">
+        <div class="sw-name">human purple</div>
+        <div class="sw-hex">#664DFF</div>
+        <div class="sw-cmyk">C50 M54 Y0 K23</div>
+        <div class="sw-rgb">R102 G77 B255</div>
+        <div class="sw-role">Signature accent</div>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="sw-chip" style="background: var(--sky-500);"></div>
+      <div class="sw-meta">
+        <div class="sw-name">sky blue</div>
+        <div class="sw-hex">#12C0FF</div>
+        <div class="sw-cmyk">C93 M25 Y0 K0 · PMS 2725 C</div>
+        <div class="sw-rgb">R18 G192 B255</div>
+        <div class="sw-role">Secondary</div>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="sw-chip" style="background: var(--lime-500);"></div>
+      <div class="sw-meta">
+        <div class="sw-name">greenblue</div>
+        <div class="sw-hex">#A0F205</div>
+        <div class="sw-cmyk">C34 M0 Y98 K5</div>
+        <div class="sw-rgb">R160 G242 B5</div>
+        <div class="sw-role">Highlight only</div>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="sw-chip" style="background: var(--human-gray); border-bottom: 1px solid var(--rule);"></div>
+      <div class="sw-meta">
+        <div class="sw-name">human gray</div>
+        <div class="sw-hex">#F8FAFB</div>
+        <div class="sw-cmyk">C1 M0 Y0 K2</div>
+        <div class="sw-rgb">R248 G250 B251</div>
+        <div class="sw-role">Page ground</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="ds-h3">Supporting blue · indigo</h3>
+  <div class="swatches row4">
+    <div class="sw">
+      <div class="sw-chip" style="background: var(--indigo);"></div>
+      <div class="sw-meta">
+        <div class="sw-name">indigo</div>
+        <div class="sw-hex">#485AFF</div>
+        <div class="sw-cmyk">C72 M65 Y0 K0</div>
+        <div class="sw-rgb">R72 G90 B255</div>
+        <div class="sw-role">Linking blue · purple ↔ sky</div>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="sw-chip" style="background: var(--purple-300);"></div>
+      <div class="sw-meta"><div class="sw-name">purple 300</div><div class="sw-hex">#B3A6FF</div><div class="sw-role">Tint surface</div></div>
+    </div>
+    <div class="sw">
+      <div class="sw-chip" style="background: var(--sky-300);"></div>
+      <div class="sw-meta"><div class="sw-name">sky 300</div><div class="sw-hex">#93E1FF</div><div class="sw-role">Soft fill</div></div>
+    </div>
+    <div class="sw">
+      <div class="sw-chip" style="background: var(--lime-300);"></div>
+      <div class="sw-meta"><div class="sw-name">lime 300</div><div class="sw-hex">#CEF97A</div><div class="sw-role">Soft highlight</div></div>
+    </div>
+  </div>
+
+  <!-- Tonal scales -->
+  <h3 class="ds-h3">Tonal scales</h3>
+  <div style="display: grid; gap: 8px;">
+    <div class="scale-strip">
+      <div style="background: var(--black-950); color:#fff;">950</div>
+      <div style="background: var(--black-900); color:#fff;">900</div>
+      <div style="background: var(--black-800); color:#fff;">800</div>
+      <div style="background: var(--black-700); color:#fff;">700</div>
+      <div style="background: var(--black-600); color:#fff;">600</div>
+      <div style="background: var(--black-500); color:#fff;">500</div>
+      <div style="background: var(--black-400); color:#fff;">400</div>
+      <div style="background: var(--black-300); color: var(--human-black);">300</div>
+      <div style="background: var(--black-200); color: var(--human-black);">200</div>
+      <div style="background: var(--black-100); color: var(--human-black);">100</div>
+    </div>
+    <div class="scale-strip">
+      <div style="background: var(--purple-700); color:#fff;">700</div>
+      <div style="background: var(--purple-600); color:#fff;">600</div>
+      <div style="background: var(--purple-500); color:#fff;">500</div>
+      <div style="background: var(--purple-400); color:#fff;">400</div>
+      <div style="background: var(--purple-300); color: var(--human-black);">300</div>
+      <div style="background: var(--purple-200); color: var(--human-black);">200</div>
+      <div style="background: var(--purple-100); color: var(--human-black);">100</div>
+    </div>
+    <div class="scale-strip">
+      <div style="background: var(--sky-700); color:#fff;">700</div>
+      <div style="background: var(--sky-600); color:#fff;">600</div>
+      <div style="background: var(--sky-500); color: var(--human-black);">500</div>
+      <div style="background: var(--sky-400); color: var(--human-black);">400</div>
+      <div style="background: var(--sky-300); color: var(--human-black);">300</div>
+      <div style="background: var(--sky-200); color: var(--human-black);">200</div>
+      <div style="background: var(--sky-100); color: var(--human-black);">100</div>
+    </div>
+    <div class="scale-strip">
+      <div style="background: var(--lime-600); color: var(--human-black);">600</div>
+      <div style="background: var(--lime-500); color: var(--human-black);">500</div>
+      <div style="background: var(--lime-400); color: var(--human-black);">400</div>
+      <div style="background: var(--lime-300); color: var(--human-black);">300</div>
+      <div style="background: var(--lime-200); color: var(--human-black);">200</div>
+      <div style="background: var(--lime-100); color: var(--human-black);">100</div>
+    </div>
+  </div>
+
+  <!-- Gradients -->
+  <h3 class="ds-h3">Brand gradients</h3>
+  <div class="row">
+    <div class="c-6"><div class="grad-tile gt-cover"><h5>Cover · radial</h5><span class="gd-tokens">radial — purple → indigo → black</span></div></div>
+    <div class="c-6"><div class="grad-tile gt-cover-flat"><h5>Cover · linear</h5><span class="gd-tokens">linear 155° — #664DFF → #000F19</span></div></div>
+    <div class="c-6"><div class="grad-tile gt-purple-blue"><h5>Purple → Sky</h5><span class="gd-tokens">linear 135° — #664DFF → #485AFF → #12C0FF</span></div></div>
+    <div class="c-6"><div class="grad-tile gt-lime-sky"><h5>Lime → Sky</h5><span class="gd-tokens">linear 120° — #A0F205 → #12C0FF</span></div></div>
+    <div class="c-6"><div class="grad-tile gt-black"><h5>Black · flat</h5><span class="gd-tokens">#000F19 — divider, statement, cover</span></div></div>
+    <div class="c-6"><div class="grad-tile gt-paper"><h5>Paper · soft</h5><span class="gd-tokens">linear 180° — #FFFFFF → #F8FAFB</span></div></div>
+  </div>
+
+  <!-- Surface usage -->
+  <h3 class="ds-h3">Surface usage</h3>
+  <div class="row">
+    <div class="c-4">
+      <div class="demo" style="background: var(--human-black); border: 0; color: #fff;">
+        <div class="demo-caption" style="color: rgba(255,255,255,.55); border-color: rgba(255,255,255,.12);"><span>Black surface</span><span>Covers · Section · Hero</span></div>
+        <p style="margin: 0; font-size: var(--t-md); line-height: 1.65;">human black은 표지·섹션 디바이더·헤드라인 슬라이드를 담당합니다. 텍스트는 흰색 (가중치 400–500), 라임은 단 하나의 강조 포인트로만 등장합니다.</p>
+      </div>
+    </div>
+    <div class="c-4">
+      <div class="demo" style="background: var(--human-gray);">
+        <div class="demo-caption"><span>Gray surface</span><span>Content · Body · Spec</span></div>
+        <p style="margin: 0; font-size: var(--t-md); line-height: 1.65; color: var(--gray-700);">human gray (#F8FAFB)는 본문 페이지·표·정보 영역의 배경입니다. 헤드라인은 black, 보조 텍스트는 gray-600, 액센트는 purple.</p>
+      </div>
+    </div>
+    <div class="c-4">
+      <div class="demo" style="background: var(--human-purple); border: 0; color: #fff;">
+        <div class="demo-caption" style="color: rgba(255,255,255,.7); border-color: rgba(255,255,255,.18);"><span>Purple surface</span><span>Statement · Highlight</span></div>
+        <p style="margin: 0; font-size: var(--t-md); line-height: 1.65;">human purple은 한 페이지의 시선을 끌어야 할 때, 슬로건이나 핵심 메시지의 배경으로 사용합니다. 텍스트는 흰색, 액센트는 라임.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     04 TYPOGRAPHY
+     ========================================================= -->
+<section class="ds" id="type">
+  <div class="eyebrow"><span class="num">04</span><span class="label">Typography</span><span class="rule"></span><span class="label">Questrial · Poppins · Pretendard</span></div>
+  <h2 class="ds-title">Typography</h2>
+  <p class="ds-lede">세 개의 서체가 명확한 역할을 나누어 사용됩니다. <strong>Questrial</strong>은 로고와 이미지 콘텐츠 디자인용, <strong>Poppins</strong>는 웹·모바일 디자인용, <strong>Pretendard</strong>는 한글 타이틀과 한·영 본문용 글꼴입니다. 세 서체 모두 좁은 자간으로 사용해 정돈된 인상을 유지합니다.</p>
+
+  <!-- Three typefaces -->
+  <div class="row">
+    <div class="c-4">
+      <div class="typeface-card">
+        <div class="tf-spec"><span>Display · Print</span><span>1 weight</span></div>
+        <h4 class="tf-name questrial">Questrial</h4>
+        <p class="tf-line questrial">No boundaries.<br/>Only possibilities.</p>
+        <p class="tf-note">로고와 이미지 기반 콘텐츠 디자인용 서체. 굵기가 다양하지 않아 웹·모바일 화면에는 사용하지 않고, 인쇄물·이미지 콘텐츠 등 편집이 가능한 작업에만 사용하며 필요 시 굵기를 후처리 조정합니다.</p>
+        <div class="tf-glyphs">Aa Bb Cc · 0123456789 · @ # &amp;</div>
+      </div>
+    </div>
+    <div class="c-4">
+      <div class="typeface-card">
+        <div class="tf-spec"><span>UI · Web · Mobile</span><span>300–700</span></div>
+        <h4 class="tf-name poppins">Poppins</h4>
+        <p class="tf-line poppins">No boundaries.<br/>Only possibilities.</p>
+        <p class="tf-note">다양한 굵기를 지원해 웹·모바일 화면에 적합한 서체. 웹·모바일에 올라가는 디자인 산출물에 사용하며, 글자가 너무 퍼져 보이지 않도록 자간을 약간 좁게 조정해 사용합니다.</p>
+        <div class="tf-glyphs">Aa Bb Cc · 0123456789 · @ # &amp;</div>
+      </div>
+    </div>
+    <div class="c-4">
+      <div class="typeface-card">
+        <div class="tf-spec"><span>Korean · Body</span><span>Variable</span></div>
+        <h4 class="tf-name pretendard">Pretendard</h4>
+        <p class="tf-line pretendard">한계 없는 가능성을<br/>디자인합니다.</p>
+        <p class="tf-note">한글 타이틀, 한글·영문 본문용 글꼴. 가독성이 좋아 긴 문장이나 설명글에 적합한 서체입니다. 시스템 전반의 본문은 Pretendard로 통일합니다.</p>
+        <div class="tf-glyphs">가나다 · ABCabc · 0123 · ※ ㈜</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Type scale -->
+  <h3 class="ds-h3">Type scale</h3>
+
+  <div class="type-row">
+    <div class="label">Display · 120</div>
+    <div style="font-family: 'Questrial', sans-serif; font-size: 120px; line-height: .96; letter-spacing: -.04em; color: var(--human-black);">Possibilities</div>
+    <div class="specs">Questrial · 400<br/>-4% tr · .96 lh</div>
+  </div>
+  <div class="type-row">
+    <div class="label">H1 · 80</div>
+    <div style="font-family: 'Questrial', sans-serif; font-size: 80px; line-height: 1.0; letter-spacing: -.03em; color: var(--human-black);">No boundaries.</div>
+    <div class="specs">Questrial · 400<br/>-3% tr · 1.0 lh</div>
+  </div>
+  <div class="type-row">
+    <div class="label">H2 · 40</div>
+    <div style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 40px; line-height: 1.05; letter-spacing: -.02em; color: var(--human-black);">Logo proposal · 시안 제안서</div>
+    <div class="specs">Poppins · 600<br/>-2% tr · 1.05 lh</div>
+  </div>
+  <div class="type-row">
+    <div class="label">H3 · 30</div>
+    <div style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 30px; line-height: 1.1; letter-spacing: -.015em; color: var(--human-black);">Concept 01 · Geometric Boundary</div>
+    <div class="specs">Poppins · 600<br/>-1.5% tr · 1.1 lh</div>
+  </div>
+  <div class="type-row">
+    <div class="label">H4 · 22 (KR)</div>
+    <div style="font-family: 'Pretendard Variable', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.25; letter-spacing: -.01em; color: var(--human-black);">컨셉 01 — 기하학적 경계를 넘어서</div>
+    <div class="specs">Pretendard · 600<br/>-1% tr · 1.25 lh</div>
+  </div>
+  <div class="type-row">
+    <div class="label">Lede · 18 (KR)</div>
+    <div style="font-family: 'Pretendard Variable', sans-serif; font-weight: 400; font-size: 18px; line-height: 1.6; color: var(--gray-700); max-width: 60ch;">Inhumanz의 첫 번째 시안은 기하학적 단순함에서 출발합니다. 정사각형과 원이 만나는 지점에서, 브랜드의 경계가 사라지는 순간을 시각적으로 포착했습니다.</div>
+    <div class="specs">Pretendard · 400<br/>1.6 lh</div>
+  </div>
+  <div class="type-row">
+    <div class="label">Body · 15 (KR)</div>
+    <div style="font-family: 'Pretendard Variable', sans-serif; font-weight: 400; font-size: 15px; line-height: 1.65; color: var(--human-black); max-width: 64ch;">로고는 단순한 그래픽이 아니라 브랜드의 약속입니다. Inhumanz의 시그니처 로고는 가장 단순한 형태로 가장 분명한 메시지를 전합니다 — 한계 없이, 가능성만.</div>
+    <div class="specs">Pretendard · 400<br/>1.65 lh</div>
+  </div>
+  <div class="type-row">
+    <div class="label">Caption · 13</div>
+    <div style="font-family: 'Pretendard Variable', sans-serif; font-weight: 500; font-size: 13px; line-height: 1.5; color: var(--gray-500);">CMYK · C50 M54 Y0 K23 · RGB · R102 G77 B255 · HEX · #664DFF</div>
+    <div class="specs">Pretendard · 500<br/>1.5 lh · gray-500</div>
+  </div>
+  <div class="type-row">
+    <div class="label">Mono · 11</div>
+    <div style="font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--gray-500);">BRAND SYSTEM · v1.0 · MAY 2026 · LOGO PROPOSAL</div>
+    <div class="specs">JetBrains Mono · 500<br/>+22% tracking</div>
+  </div>
+
+  <!-- Statement -->
+  <h3 class="ds-h3">Statement style · highlight emphasis</h3>
+  <div class="demo" style="background: var(--human-black); color: #fff; border: 0;">
+    <p style="font-family: 'Questrial', sans-serif; font-size: 56px; line-height: 1.15; letter-spacing: -.025em; margin: 0; color: #fff;">
+      Inhumanz believes design begins where <span class="u-key" style="color: var(--human-black);">boundaries end</span> — every concept opens a new possibility.
+    </p>
+    <div class="t-eyebrow" style="color: rgba(255,255,255,.5); margin-top: 24px;">—— Brand Statement · 2026</div>
+  </div>
+</section>
+
+<!-- =========================================================
+     05 SPACING & GRID
+     ========================================================= -->
+<section class="ds" id="space">
+  <div class="eyebrow"><span class="num">05</span><span class="label">Spacing &amp; Grid</span><span class="rule"></span><span class="label">8 pt base · multi-medium</span></div>
+  <h2 class="ds-title">Spacing &amp; grid</h2>
+  <p class="ds-lede">8 pt 기반 스페이싱 스케일은 웹과 인쇄 모두에 일관되게 적용됩니다. 제안서 슬라이드는 1920 × 1080 캔버스에 외부 마진 100 px, 웹은 12 컬럼 24 px 거터, 인쇄(A4)는 12 컬럼 8 mm 거터를 표준으로 합니다.</p>
+
+  <h3 class="ds-h3">Spacing scale (8 pt base)</h3>
+  <div class="space-row">
+    <div class="space-block" style="width:4px; height:4px;" data-px="4"></div>
+    <div class="space-block" style="width:8px; height:8px;" data-px="8"></div>
+    <div class="space-block" style="width:12px; height:12px;" data-px="12"></div>
+    <div class="space-block" style="width:16px; height:16px;" data-px="16"></div>
+    <div class="space-block" style="width:24px; height:24px;" data-px="24"></div>
+    <div class="space-block" style="width:32px; height:32px;" data-px="32"></div>
+    <div class="space-block" style="width:48px; height:48px;" data-px="48"></div>
+    <div class="space-block" style="width:64px; height:64px;" data-px="64"></div>
+    <div class="space-block" style="width:96px; height:96px;" data-px="96"></div>
+    <div class="space-block" style="width:128px; height:128px;" data-px="128"></div>
+  </div>
+
+  <h3 class="ds-h3">Web grid · 12 col · 24 px gutter</h3>
+  <div class="grid-demo">
+    <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
+    <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
+    <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
+  </div>
+
+  <h3 class="ds-h3">Document grid</h3>
+  <div class="demo">
+    <table style="width: 100%; border-collapse: collapse; font-size: var(--t-sm);">
+      <tr style="border-bottom: 1px solid var(--rule);">
+        <td style="padding: 12px 0; color: var(--gray-500); font-family: var(--font-mono); font-size: var(--t-xs); letter-spacing: .18em; text-transform: uppercase;">Slide canvas</td>
+        <td style="padding: 12px 0;">1920 × 1080 px · 16:9 · 외부 마진 100 px · 상하 140 px</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--rule);">
+        <td style="padding: 12px 0; color: var(--gray-500); font-family: var(--font-mono); font-size: var(--t-xs); letter-spacing: .18em; text-transform: uppercase;">Web max</td>
+        <td style="padding: 12px 0;">1320 px max-width · 12 col · 24 px gutter · 40 px outer</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--rule);">
+        <td style="padding: 12px 0; color: var(--gray-500); font-family: var(--font-mono); font-size: var(--t-xs); letter-spacing: .18em; text-transform: uppercase;">Print (A4)</td>
+        <td style="padding: 12px 0;">210 × 297 mm · 상하 좌우 20 mm · 12 col · 4 mm gutter</td>
+      </tr>
+      <tr>
+        <td style="padding: 12px 0; color: var(--gray-500); font-family: var(--font-mono); font-size: var(--t-xs); letter-spacing: .18em; text-transform: uppercase;">Title size</td>
+        <td style="padding: 12px 0;">Cover 200 · Statement 96 · H2 80 · Body 26 (1920 canvas)</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- =========================================================
+     06 SECTION NUMERALS & CHROME
+     ========================================================= -->
+<section class="ds" id="numerals">
+  <div class="eyebrow"><span class="num">06</span><span class="label">Section numerals</span><span class="rule"></span><span class="label">Big light figures · Lime spine</span></div>
+  <h2 class="ds-title">Section numerals &amp; page chrome</h2>
+  <p class="ds-lede">제안서·브로셔의 섹션 표지는 거대한 라이트 웨이트 숫자와 라임 좌측 라인으로 구성됩니다. 정적이지만 강한 시각적 리듬 — Inhumanz의 시그니처 페이지 구조입니다.</p>
+
+  <div class="row">
+    <div class="c-6">
+      <div class="opener">
+        <div class="num">01</div>
+        <div class="meta">
+          <div class="kicker">Section · Concept</div>
+          <div class="title">Logo<br/>Concept</div>
+        </div>
+      </div>
+    </div>
+    <div class="c-6">
+      <div class="opener">
+        <div class="num">03</div>
+        <div class="meta">
+          <div class="kicker">Section · Application</div>
+          <div class="title">Brand<br/>Application</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="ds-h3">Page rail / chrome</h3>
+  <div class="demo" style="padding: 0;">
+    <div style="background: var(--human-gray); padding: 18px 28px; display: grid; grid-template-columns: 1fr 1fr 1fr; font-family: var(--font-mono); font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--gray-500); border-bottom: 1px solid var(--rule);">
+      <div><span style="display: inline-block; width: 7px; height: 7px; background: var(--lime-500); border-radius: 999px; margin-right: 8px; vertical-align: 1px;"></span>VERSION 1.0</div>
+      <div style="text-align:center;">INHUMANZ · LOGO PROPOSAL</div>
+      <div style="text-align:right;">MAY 2026 · INHUMANZ.COM</div>
+    </div>
+    <div style="padding: 24px 28px;">
+      <div class="t-eyebrow" style="margin-bottom: 8px;">Layout rule</div>
+      <div style="font-size: var(--t-sm); color: var(--gray-700); line-height: 1.6;">레일은 모든 페이지에 일관되게 등장합니다. 좌측 버전, 가운데 문서명, 우측 날짜/URL. JetBrains Mono 12 px (인쇄), .22 em 트래킹, 대문자, gray-500.</div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     07 PROPOSAL COMPONENTS — Concept cards
+     ========================================================= -->
+<section class="ds" id="proposal">
+  <div class="eyebrow"><span class="num">07</span><span class="label">Proposal Components</span><span class="rule"></span><span class="label">Concept · Rationale · Variation</span></div>
+  <h2 class="ds-title">Logo 시안 제안 컴포넌트</h2>
+  <p class="ds-lede">로고 시안 제안서 페이지를 구성하는 핵심 컴포넌트들입니다. 각 시안마다 <strong>컨셉 카드</strong>(개요·키워드·근거)와 <strong>비교 그리드</strong>(컬러 변형·배경 변형)를 한 세트로 사용해, 의사 결정자가 시안 간 차이를 빠르게 비교할 수 있도록 합니다.</p>
+
+  <!-- Concept card grid — 3 concepts -->
+  <h3 class="ds-h3">Concept cards · 시안별 카드</h3>
+  <div class="row">
+
+    <div class="c-4">
+      <div class="concept-card">
+        <div class="head">
+          <div class="num">01</div>
+          <div class="meta">CONCEPT<br/>01 OF 03</div>
+        </div>
+        <div>
+          <h3 class="ttl"><small>GEOMETRIC · BOUNDARY</small>경계의 단순함</h3>
+        </div>
+        <div class="preview">
+          <div class="logo dark"><span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span><span class="word">inhumanz</span></div>
+        </div>
+        <p class="rationale">기하학적 형태의 가장 단순한 조합 — 사각형과 원 — 으로 브랜드의 경계 개념을 시각화합니다. 단순함이 곧 명확함이 되는 접근입니다.</p>
+        <div class="keywords">
+          <span class="tag">GEOMETRIC</span>
+          <span class="tag">MINIMAL</span>
+          <span class="tag">CONFIDENT</span>
+        </div>
+        <div class="props">
+          <div class="pr-row"><div class="lbl">Color</div><div class="val">Black</div></div>
+          <div class="pr-row"><div class="lbl">Tone</div><div class="val">Restrained</div></div>
+          <div class="pr-row"><div class="lbl">Use</div><div class="val">Primary</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="c-4">
+      <div class="concept-card">
+        <div class="head">
+          <div class="num">02</div>
+          <div class="meta">CONCEPT<br/>02 OF 03</div>
+        </div>
+        <div>
+          <h3 class="ttl"><small>VIBRANT · POSSIBILITY</small>가능성의 파장</h3>
+        </div>
+        <div class="preview" style="background: var(--human-purple);">
+          <div class="logo light"><span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span><span class="word">inhumanz</span></div>
+        </div>
+        <p class="rationale">시그니처 퍼플 위에 흰색 로고를 올려 가장 큰 임팩트를 만들어내는 컬러 적용 시안. 브랜드의 에너지와 자신감을 직설적으로 전달합니다.</p>
+        <div class="keywords">
+          <span class="tag">BOLD</span>
+          <span class="tag">SIGNATURE</span>
+          <span class="tag">ENERGETIC</span>
+        </div>
+        <div class="props">
+          <div class="pr-row"><div class="lbl">Color</div><div class="val">Purple</div></div>
+          <div class="pr-row"><div class="lbl">Tone</div><div class="val">Bold</div></div>
+          <div class="pr-row"><div class="lbl">Use</div><div class="val">Hero · Cover</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="c-4">
+      <div class="concept-card">
+        <div class="head">
+          <div class="num">03</div>
+          <div class="meta">CONCEPT<br/>03 OF 03</div>
+        </div>
+        <div>
+          <h3 class="ttl"><small>FUTURE · GRADIENT</small>미래의 빛</h3>
+        </div>
+        <div class="preview" style="background: var(--grad-cover);">
+          <div class="logo light"><span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span><span class="word">inhumanz</span></div>
+        </div>
+        <p class="rationale">퍼플에서 인디고, 블랙으로 흐르는 그라데이션 위의 로고. 디지털 인터페이스·인트로 화면·메인 비주얼 등 동적 매체에서 가장 강력한 인상을 남기는 적용입니다.</p>
+        <div class="keywords">
+          <span class="tag">FUTURE</span>
+          <span class="tag">DIGITAL</span>
+          <span class="tag">DYNAMIC</span>
+        </div>
+        <div class="props">
+          <div class="pr-row"><div class="lbl">Color</div><div class="val">Gradient</div></div>
+          <div class="pr-row"><div class="lbl">Tone</div><div class="val">Dynamic</div></div>
+          <div class="pr-row"><div class="lbl">Use</div><div class="val">Digital</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Stat blocks — proposal headline -->
+  <h3 class="ds-h3">Headline metrics · 제안 요약 블록</h3>
+  <div class="row">
+    <div class="c-3">
+      <div class="stat-blk">
+        <div class="figure purple">03</div>
+        <div class="lbl">Concepts</div>
+        <div class="cap">3개의 컨셉 방향에서 출발한 로고 시안.</div>
+      </div>
+    </div>
+    <div class="c-3">
+      <div class="stat-blk">
+        <div class="figure">12</div>
+        <div class="lbl">Variations</div>
+        <div class="cap">각 컨셉당 4개의 컬러·배경 변형을 포함합니다.</div>
+      </div>
+    </div>
+    <div class="c-3">
+      <div class="stat-blk">
+        <div class="figure sky">04</div>
+        <div class="lbl">Applications</div>
+        <div class="cap">명함, 모바일 스플래시, 사이니지, 굿즈 적용 mockup.</div>
+      </div>
+    </div>
+    <div class="c-3">
+      <div class="stat-blk">
+        <div class="figure lime">∞</div>
+        <div class="lbl">Possibilities</div>
+        <div class="cap">한계는 없습니다 — Inhumanz의 약속.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     08 APPLICATION — Mockups
+     ========================================================= -->
+<section class="ds" id="application">
+  <div class="eyebrow"><span class="num">08</span><span class="label">Application</span><span class="rule"></span><span class="label">Real-world mockups</span></div>
+  <h2 class="ds-title">Brand application</h2>
+  <p class="ds-lede">로고가 실제 매체에 어떻게 적용되는지를 보여주는 mockup 컴포넌트입니다. 명함·모바일 스플래시·포스터 등 빈번한 적용 매체를 우선 포함합니다.</p>
+
+  <!-- Business card row -->
+  <h3 class="ds-h3">Business cards · 명함</h3>
+  <div class="row">
+    <div class="c-4">
+      <div class="mockup" style="background: var(--human-gray);">
+        <div class="mk-label">01 / WHITE</div>
+        <div class="bcard">
+          <div class="top">
+            <div class="logo dark"><span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span><span class="word">inhumanz</span></div>
+          </div>
+          <div class="info">
+            <div class="role">CREATIVE DIRECTOR</div>
+            <div class="nm">이도현 · Dohyun Lee</div>
+            <div>dohyun@inhumanz.com</div>
+            <div>+82 10 1234 5678</div>
+            <div>Seoul, KR · inhumanz.com</div>
+          </div>
+          <svg class="corner-mark" viewBox="0 0 24 24"><use href="#inh-symbol"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="c-4">
+      <div class="mockup dark">
+        <div class="mk-label">02 / BLACK</div>
+        <div class="bcard dark">
+          <div class="top">
+            <div class="logo light"><span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span><span class="word">inhumanz</span></div>
+          </div>
+          <div class="info">
+            <div class="role">CREATIVE DIRECTOR</div>
+            <div class="nm">이도현 · Dohyun Lee</div>
+            <div>dohyun@inhumanz.com</div>
+            <div>+82 10 1234 5678</div>
+            <div>Seoul, KR · inhumanz.com</div>
+          </div>
+          <svg class="corner-mark" viewBox="0 0 24 24" style="color: var(--lime-500); fill: var(--lime-500);"><use href="#inh-symbol"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="c-4">
+      <div class="mockup purple">
+        <div class="mk-label">03 / PURPLE</div>
+        <div class="bcard purple">
+          <div class="top">
+            <div class="logo light"><span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span><span class="word">inhumanz</span></div>
+          </div>
+          <div class="info">
+            <div class="role">CREATIVE DIRECTOR</div>
+            <div class="nm">이도현 · Dohyun Lee</div>
+            <div>dohyun@inhumanz.com</div>
+            <div>+82 10 1234 5678</div>
+            <div>Seoul, KR · inhumanz.com</div>
+          </div>
+          <svg class="corner-mark" viewBox="0 0 24 24" style="color: var(--lime-500); fill: var(--lime-500);"><use href="#inh-symbol"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phone + Poster -->
+  <h3 class="ds-h3">Digital &amp; print</h3>
+  <div class="row">
+    <div class="c-4">
+      <div class="mockup" style="background: var(--gray-100); padding: 32px 24px;">
+        <div class="mk-label">04 / MOBILE SPLASH</div>
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="screen">
+            <div class="logo">
+              <span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span>
+              <span class="word">inhumanz</span>
+            </div>
+            <div class="tagline">No boundaries. Only possibilities.</div>
+            <span class="lime-dot"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="c-4">
+      <div class="mockup" style="background: var(--gray-100); padding: 24px;">
+        <div class="mk-label">05 / POSTER · A2</div>
+        <div class="poster" style="max-width: 280px;">
+          <div class="top">
+            <div class="logo light"><span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span></div>
+            <span class="tag" style="background: transparent; color: rgba(255,255,255,.65); border-color: rgba(255,255,255,.3);">2026 · Vol 01</span>
+          </div>
+          <div class="center">
+            No<br/>
+            <span class="lime">boundaries.</span><br/>
+            Only<br/>
+            possibilities.
+          </div>
+          <div class="bot">
+            <span>INHUMANZ</span>
+            <span>26 · 05 · SEOUL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="c-4">
+      <div class="mockup" style="background: var(--gray-100); padding: 24px; flex-direction: column; gap: 14px;">
+        <div class="mk-label">06 / SIGNAGE TILE</div>
+        <div style="background: var(--human-black); width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+          <div style="position: absolute; inset: 0; background: radial-gradient(50% 40% at 30% 70%, rgba(102,77,255,.45), transparent 70%);"></div>
+          <div class="logo light" style="font-size: 56px; position: relative;">
+            <span class="symbol"><svg class="logo-svg-symbol"><use href="#inh-symbol"/></svg></span>
+          </div>
+          <div style="position: absolute; bottom: 14px; left: 14px; right: 14px; display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 9px; letter-spacing: .2em; color: rgba(255,255,255,.5); text-transform: uppercase;">
+            <span>INHUMANZ</span>
+            <span>SEOUL · 2026</span>
+          </div>
+        </div>
+        <div style="font-size: var(--t-sm); color: var(--gray-600); line-height: 1.5;">정사각형 사이니지 적용. 라임 단일 점 또는 워드마크 없이 심볼만으로 운영합니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     09 TOKENS
+     ========================================================= -->
+<section class="ds" id="tokens">
+  <div class="eyebrow"><span class="num">09</span><span class="label">Tokens</span><span class="rule"></span><span class="label">Design tokens · CSS variables</span></div>
+  <h2 class="ds-title">Design tokens</h2>
+  <p class="ds-lede">디자인 시스템을 코드로 사용할 때 참조하는 토큰 묶음입니다. 모든 컬러·간격·서체 값은 CSS 변수로 정의되어 있으며, 이 시스템 위에 작업하는 모든 산출물은 동일한 토큰을 공유합니다.</p>
+
+  <div class="row">
+    <div class="c-6">
+      <div class="tokens-pane">
+<h4>color · brand</h4>
+<div><span class="k">--human-black</span>: <span class="v">#000F19</span>;</div>
+<div><span class="k">--human-purple</span>: <span class="v">#664DFF</span>;</div>
+<div><span class="k">--sky-blue</span>: <span class="v">#12C0FF</span>;</div>
+<div><span class="k">--green-blue</span>: <span class="v">#A0F205</span>;</div>
+<div><span class="k">--indigo</span>: <span class="v">#485AFF</span>;</div>
+<div><span class="k">--human-gray</span>: <span class="v">#F8FAFB</span>;</div>
+
+<h4>typography</h4>
+<div><span class="k">--font-display</span>: <span class="s">"Questrial"</span>;</div>
+<div><span class="k">--font-ui</span>:      <span class="s">"Poppins"</span>;</div>
+<div><span class="k">--font-body</span>:    <span class="s">"Pretendard Variable"</span>;</div>
+<div><span class="k">--font-mono</span>:    <span class="s">"JetBrains Mono"</span>;</div>
+<div class="c">// scale: 10 → 280 px</div>
+<div><span class="k">--t-md</span>: <span class="v">15px</span>;</div>
+<div><span class="k">--t-lg</span>: <span class="v">18px</span>;</div>
+<div><span class="k">--t-3xl</span>: <span class="v">40px</span>;</div>
+<div><span class="k">--t-5xl</span>: <span class="v">80px</span>;</div>
+<div><span class="k">--t-6xl</span>: <span class="v">120px</span>;</div>
+      </div>
+    </div>
+    <div class="c-6">
+      <div class="tokens-pane">
+<h4>gradient</h4>
+<div><span class="k">--grad-cover</span>: <span class="v">radial(purple → indigo → black)</span>;</div>
+<div><span class="k">--grad-cover-flat</span>: <span class="v">linear 155° (purple → black)</span>;</div>
+<div><span class="k">--grad-purple-blue</span>: <span class="v">linear (purple → indigo → sky)</span>;</div>
+<div><span class="k">--grad-lime-sky</span>: <span class="v">linear (lime → sky)</span>;</div>
+
+<h4>spacing</h4>
+<div><span class="k">--s-1</span>: <span class="v">4px</span>;  <span class="c">// 0.5</span></div>
+<div><span class="k">--s-2</span>: <span class="v">8px</span>;  <span class="c">// base</span></div>
+<div><span class="k">--s-4</span>: <span class="v">16px</span>;</div>
+<div><span class="k">--s-5</span>: <span class="v">24px</span>;</div>
+<div><span class="k">--s-7</span>: <span class="v">48px</span>;</div>
+<div><span class="k">--s-9</span>: <span class="v">96px</span>;</div>
+<div><span class="k">--s-10</span>: <span class="v">128px</span>;</div>
+
+<h4>radius</h4>
+<div><span class="k">--r-0</span>: <span class="v">0</span>;</div>
+<div><span class="k">--r-3</span>: <span class="v">8px</span>;</div>
+<div><span class="k">--r-pill</span>: <span class="v">999px</span>;</div>
+
+<h4>layout</h4>
+<div><span class="k">--max-w</span>: <span class="v">1320px</span>;</div>
+<div><span class="k">--pad-x</span>: <span class="v">40px</span>;</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="ds-footer" style="margin-top: var(--s-7);">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div class="word" style="display: inline-flex; align-items: center; gap: 14px;">
+          <span style="display: inline-block; width: 56px; height: 56px;"><svg class="logo-svg-symbol" style="fill: var(--lime-500);"><use href="#inh-symbol"/></svg></span>
+          <span>inhumanz</span>
+        </div>
+        <p>No boundaries. Only possibilities. — Inhumanz Brand Design System v1.0, derived from the official Brand Guide.</p>
+      </div>
+      <div>
+        <h5>System</h5>
+        <ul>
+          <li>Foundation</li>
+          <li>Logo system</li>
+          <li>Color</li>
+          <li>Typography</li>
+          <li>Components</li>
+        </ul>
+      </div>
+      <div>
+        <h5>For proposal use</h5>
+        <ul>
+          <li>Concept cards</li>
+          <li>Mockups · BC, mobile, poster</li>
+          <li>Do/don't</li>
+          <li>Clear space</li>
+          <li>Color variations</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li>hello@inhumanz.com</li>
+          <li>inhumanz.com</li>
+          <li>Seoul, KR</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <div>© 2026 Inhumanz · Brand System v1.0 · Derived from Inhumanz Brand Guide 1.0</div>
+      <div class="vers">V 1.0 · MAY 2026</div>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+</body>
+</html>
