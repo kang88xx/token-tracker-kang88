@@ -407,7 +407,17 @@ export default function Page() {
                         >
                           <div className="rank">{h.rank < 10 ? "0" + h.rank : h.rank}</div>
                           <div className="t-who">
-                            <div className="t-addr">{shortAddr(h.address)}</div>
+                            <a
+                              className="t-addr"
+                              href={dataChain.explorerAddress + h.address}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title={`${dataChain.explorerName}에서 지갑 보기`}
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              {shortAddr(h.address)}
+                              <span className="ext">↗</span>
+                            </a>
                             <div className="t-tags">
                               <span className={`tag${h.tag === "BURN" ? "" : h.tag ? " purple" : ""}`}>
                                 {h.tag ?? "WALLET"}
@@ -594,7 +604,16 @@ export default function Page() {
                         <tr key={h.address + h.rank}>
                           <td>{h.rank < 10 ? "0" + h.rank : h.rank}</td>
                           <td>
-                            <span className="addr">{shortAddr(h.address)}</span>
+                            <a
+                              className="addr"
+                              href={dataChain.explorerAddress + h.address}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title={`${dataChain.explorerName}에서 지갑 보기`}
+                            >
+                              {shortAddr(h.address)}
+                              <span className="ext">↗</span>
+                            </a>
                             {h.tag && (
                               <span className={`tag${h.tag === "BURN" ? "" : " purple"}`}>
                                 {h.tag}

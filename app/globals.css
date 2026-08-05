@@ -358,7 +358,19 @@ p.ds-lede {
   letter-spacing: .01em;
   color: var(--human-black);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  text-decoration: none;
+  display: inline-block; max-width: 100%;
+  transition: color .12s;
 }
+a.t-addr:hover { color: var(--human-purple); text-decoration: underline; text-underline-offset: 3px; }
+.ext {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 10px;
+  color: var(--gray-400);
+  transition: color .12s, transform .12s;
+}
+a.t-addr:hover .ext, td a.addr:hover .ext { color: var(--human-purple); transform: translate(1px, -1px); }
 .t-tags { display: flex; gap: 6px; margin-top: 4px; flex-wrap: wrap; }
 .t-tags .tag { font-size: 9px; padding: 3px 7px; letter-spacing: .12em; }
 .t-barcell { min-width: 0; }
@@ -496,7 +508,8 @@ tbody td {
 tbody td:nth-child(1), tbody td:nth-child(2) { text-align: left; }
 tbody td:nth-child(1) { color: var(--gray-400); width: 56px; }
 tbody tr:hover td { background: var(--gray-50); }
-td .addr { color: var(--human-black); font-weight: 500; }
+td .addr { color: var(--human-black); font-weight: 500; text-decoration: none; transition: color .12s; }
+td a.addr:hover { color: var(--human-purple); text-decoration: underline; text-underline-offset: 3px; }
 td .tag { font-size: 8px; padding: 2px 6px; letter-spacing: .1em; margin-left: 8px; vertical-align: 1px; }
 td .pctcell { font-weight: 700; color: var(--human-black); }
 td .sharebar {
