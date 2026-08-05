@@ -11,7 +11,7 @@
 | BNB Chain | Moralis (chain=bsc) | `MORALIS_API_KEY` 필요 |
 | Solana | Helius/공개 RPC(상위 20) 또는 Birdeye(상위 100) + Jupiter 메타·가격 | 권장 — `HELIUS_API_KEY`(무료), 선택 — `BIRDEYE_API_KEY` |
 | Robinhood Chain | Blockscout 공식 API (`robinhoodchain.blockscout.com`) | 불필요 |
-| Xphere | TAMSA 익스플로러 비공식 API (`xp.tamsa.io`) | 불필요 |
+| Xphere | TAMSA 비공식 API + XpSwap 온체인 풀 가격(RPC) + CoinGecko XP/USD | 불필요 |
 
 ## 실행
 
