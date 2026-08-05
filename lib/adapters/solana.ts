@@ -141,21 +141,27 @@ export async function fetchSolanaHolders(mint: string): Promise<HoldersResult> {
   const totalSupply = supplyRes.value.uiAmount;
 
   const birdeyeKey = process.env.BIRDEYE_API_KEY;
-  let holders: HolderRow[];
+  let holders: HolderRow[] | null = null;
   let partial: HoldersResult["partial"] = null;
 
   if (birdeyeKey) {
-    const items = await birdeyeTop100(mint, birdeyeKey);
-    holders = items.map((h, i) => ({
-      rank: i + 1,
-      address: h.owner,
-      balanceRaw: h.amount,
-      balance: h.ui_amount,
-      pct: totalSupply && totalSupply > 0 ? (h.ui_amount / totalSupply) * 100 : null,
-      usdValue: price.usd != null ? h.ui_amount * price.usd : null,
-      tag: null,
-    }));
-  } else {
+    // Birdeye 무료 티어는 순간 호출 제한이 빡빡함 — 실패하면 RPC 상위 20 경로로 폴백
+    try {
+      const items = await birdeyeTop100(mint, birdeyeKey);
+      holders = items.map((h, i) => ({
+        rank: i + 1,
+        address: h.owner,
+        balanceRaw: h.amount,
+        balance: h.ui_amount,
+        pct: totalSupply && totalSupply > 0 ? (h.ui_amount / totalSupply) * 100 : null,
+        usdValue: price.usd != null ? h.ui_amount * price.usd : null,
+        tag: null,
+      }));
+    } catch {
+      holders = null;
+    }
+  }
+  if (holders === null) {
     // 키 없는 경로: 상위 20 토큰계정 → owner 지갑 주소로 해석
     const largest = await rpc<{ value: Array<{ address: string; uiAmount: number | null; amount: string }> }>(
       "getTokenLargestAccounts",
@@ -181,7 +187,9 @@ export async function fetchSolanaHolders(mint: string): Promise<HoldersResult> {
     });
     partial = {
       limit: 20,
-      reason: "Solana 공개 RPC는 상위 20개까지만 제공합니다. BIRDEYE_API_KEY를 설정하면 상위 100개로 확장됩니다.",
+      reason: birdeyeKey
+        ? "Birdeye 호출 한도에 잠시 걸려 상위 20개만 표시 중입니다. 약 1분 후 다시 조회하면 상위 100개가 나옵니다."
+        : "Solana 공개 RPC는 상위 20개까지만 제공합니다. BIRDEYE_API_KEY를 설정하면 상위 100개로 확장됩니다.",
     };
   }
 
