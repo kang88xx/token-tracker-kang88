@@ -80,6 +80,26 @@ async function jupMeta(mint: string): Promise<JupToken | null> {
   return status === 200 && body ? body : null;
 }
 
+/** Helius DAS getAsset — Jupiter 목록에 없는 토큰도 온체인 메타데이터를 준다 */
+async function dasMeta(mint: string): Promise<JupToken | null> {
+  const { url } = rpcUrl();
+  if (!url.includes("helius")) return null;
+  try {
+    const { status, body } = await fetchJson<{
+      result?: { content?: { metadata?: { name?: string; symbol?: string } } };
+    }>(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "getAsset", params: { id: mint } }),
+      timeoutMs: 8000,
+    });
+    const m = status === 200 ? body?.result?.content?.metadata : undefined;
+    return m?.name || m?.symbol ? { name: m.name, symbol: m.symbol } : null;
+  } catch {
+    return null;
+  }
+}
+
 async function jupPrice(mint: string): Promise<{ usd: number | null; change24h: number | null }> {
   const { status, body } = await fetchJson<Record<string, { usdPrice?: number; priceChange24h?: number }>>(
     `${JUP_PRICE}?ids=${mint}`,
@@ -110,11 +130,13 @@ async function birdeyeTop100(mint: string, apiKey: string): Promise<BirdeyeHolde
 }
 
 export async function fetchSolanaHolders(mint: string): Promise<HoldersResult> {
-  const [supplyRes, meta, price] = await Promise.all([
+  const [supplyRes, dasResult, jupResult, price] = await Promise.all([
     rpc<{ value: { uiAmount: number | null; decimals: number } }>("getTokenSupply", [mint]),
+    dasMeta(mint),
     jupMeta(mint).catch(() => null),
     jupPrice(mint).catch(() => ({ usd: null, change24h: null })),
   ]);
+  const meta = dasResult ?? jupResult;
   const decimals = supplyRes.value.decimals;
   const totalSupply = supplyRes.value.uiAmount;
 
