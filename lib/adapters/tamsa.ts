@@ -18,6 +18,8 @@ interface TamsaHoldersResponse {
     price?: number;
   };
   data?: Array<{ address?: string; balance?: string }>;
+  totalCount?: number;
+  pagination?: { total?: number };
 }
 
 export async function fetchTamsaHolders(address: string): Promise<HoldersResult> {
@@ -65,7 +67,12 @@ export async function fetchTamsaHolders(address: string): Promise<HoldersResult>
       totalSupply,
       priceUsd,
       priceChange24h: null,
-      holdersCount: null, // TAMSA 홀더 API는 총 홀더 수를 반환하지 않음
+      holdersCount:
+        typeof body.totalCount === "number"
+          ? body.totalCount
+          : typeof body.pagination?.total === "number"
+            ? body.pagination.total
+            : null,
     },
     holders,
     partial: null,
