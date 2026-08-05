@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { CHAINS, CHAIN_ORDER, type ChainConfig } from "@/lib/chains";
 import type { ChainId, HoldersResult } from "@/lib/types";
 
@@ -74,7 +74,7 @@ type ApiError = { code: string; message: string };
 
 export default function Page() {
   const [chainId, setChainId] = useState<ChainId>("xph");
-  const [input, setInput] = useState<string>(CHAINS.xph.demoToken!.address);
+  const [input, setInput] = useState<string>("");
   const [data, setData] = useState<HoldersResult | null>(null);
   const [error, setError] = useState<ApiError | null>(null);
   const [loading, setLoading] = useState(false);
@@ -114,33 +114,14 @@ export default function Page() {
     }
   }, []);
 
-  // 첫 진입: 키 없이 동작하는 Xphere 데모 토큰을 라이브로 로드.
-  // 콜드 스타트 직후 업스트림이 잠깐 흔들릴 수 있어 실패 시 2초 후 1회 자동 재시도.
-  useEffect(() => {
-    let cancelled = false;
-    void load("xph", CHAINS.xph.demoToken!.address).then((ok) => {
-      if (!ok && !cancelled) {
-        setTimeout(() => {
-          if (!cancelled) void load("xph", CHAINS.xph.demoToken!.address);
-        }, 2000);
-      }
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [load]);
-
   const selectChain = (c: ChainConfig) => {
     setChainId(c.id);
-    const demo = c.demoToken;
-    if (demo) {
-      setInput(demo.address);
-      void load(c.id, demo.address);
-    } else {
-      setInput("");
-      setData(null);
-      setError(null);
-    }
+    // 자동 조회하지 않는다 — 주소를 입력하고 조회를 눌러야 결과 표시
+    setInput("");
+    setData(null);
+    setError(null);
+    abortRef.current?.abort();
+    setLoading(false);
   };
 
   const submit = () => {
