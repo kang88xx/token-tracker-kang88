@@ -1,5 +1,6 @@
 import { AdapterError, type HolderRow, type HoldersResult } from "../types";
 import { burnTag, fetchJson, formatUnits, pctFromRaw, safeDecimals } from "../util";
+import { xpswapPrice } from "./xpswap";
 
 /**
  * Xphere — TAMSA 익스플로러(Seoullabs 운영)의 비공식 API.
@@ -34,8 +35,9 @@ export async function fetchTamsaHolders(address: string): Promise<HoldersResult>
   const meta = body.tokenData;
   const decimals = safeDecimals(meta.tokenDecimal);
   const totalSupply = meta.totalSupply ? formatUnits(meta.totalSupply, decimals) : null;
-  // TAMSA의 price 필드는 대부분 0 — 0은 '가격 없음'으로 취급
-  const priceUsd = meta.price && meta.price > 0 ? meta.price : null;
+  // TAMSA의 price 필드는 대부분 0 — 0이면 XpSwap 온체인 풀에서 직접 계산 (실패 시 null)
+  const priceUsd =
+    meta.price && meta.price > 0 ? meta.price : await xpswapPrice(address, decimals);
 
   const rows = Array.isArray(body.data) ? body.data : [];
   const holders: HolderRow[] = rows
