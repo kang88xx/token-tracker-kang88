@@ -21,10 +21,12 @@ function rateLimited(ip: string): boolean {
   const now = Date.now();
   const bucket = rateBuckets.get(ip);
   if (!bucket || now > bucket.resetAt) {
-    rateBuckets.set(ip, { count: 1, resetAt: now + 60_000 });
     if (rateBuckets.size > 1000) {
       for (const [k, v] of rateBuckets) if (now > v.resetAt) rateBuckets.delete(k);
+      // 만료 정리로도 안 줄면(1분 내 대량 유입) 통째로 리셋 — 무한 성장 방지가 우선
+      if (rateBuckets.size > 5000) rateBuckets.clear();
     }
+    rateBuckets.set(ip, { count: 1, resetAt: now + 60_000 });
     return false;
   }
   bucket.count += 1;
@@ -79,11 +81,11 @@ export async function GET(req: NextRequest) {
       task = (async (): Promise<HoldersResult> => {
         switch (chain.adapter) {
           case "moralis":
-            return fetchMoralisHolders(chain.id, chain.moralisChain!, addressParam);
+            return fetchMoralisHolders(chain.id, chain.moralisChain!, canonical);
           case "blockscout":
-            return fetchBlockscoutHolders(chain.id, chain.blockscoutBase!, addressParam);
+            return fetchBlockscoutHolders(chain.id, chain.blockscoutBase!, canonical);
           case "tamsa":
-            return fetchTamsaHolders(addressParam);
+            return fetchTamsaHolders(canonical);
           case "solana":
             return fetchSolanaHolders(addressParam);
         }

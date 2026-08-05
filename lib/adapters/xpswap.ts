@@ -62,8 +62,10 @@ async function batchCall(calls: Array<{ to: string; data: string }>): Promise<(s
 
 /* XP/USD — CoinGecko, 5분 모듈 캐시 */
 let xpCache: { price: number; at: number } | null = null;
+const XP_FRESH_MS = 5 * 60_000;
+const XP_MAX_STALE_MS = 60 * 60_000;
 async function xpUsd(): Promise<number | null> {
-  if (xpCache && Date.now() - xpCache.at < 5 * 60_000) return xpCache.price;
+  if (xpCache && Date.now() - xpCache.at < XP_FRESH_MS) return xpCache.price;
   try {
     const { status, body } = await fetchJson<{ xphere?: { usd?: number } }>(
       "https://api.coingecko.com/api/v3/simple/price?ids=xphere&vs_currencies=usd",
@@ -77,18 +79,23 @@ async function xpUsd(): Promise<number | null> {
   } catch {
     /* 가격은 optional */
   }
-  return xpCache?.price ?? null;
+  // 갱신 실패 시 stale 캐시는 최대 60분까지만 사용
+  if (xpCache && Date.now() - xpCache.at < XP_MAX_STALE_MS) return xpCache.price;
+  return null;
 }
 
-function hexToBig(word: string): bigint {
-  return BigInt("0x" + (word || "0"));
+function hexToBig(word: string): bigint | null {
+  if (!/^[0-9a-fA-F]+$/.test(word || "")) return null;
+  return BigInt("0x" + word);
 }
 
 /** getReserves 반환값(reserve0, reserve1) 파싱 */
 function parseReserves(hex: string): { r0: bigint; r1: bigint } | null {
   const h = hex.replace(/^0x/, "");
   if (h.length < 128) return null;
-  return { r0: hexToBig(h.slice(0, 64)), r1: hexToBig(h.slice(64, 128)) };
+  const r0 = hexToBig(h.slice(0, 64));
+  const r1 = hexToBig(h.slice(64, 128));
+  return r0 !== null && r1 !== null ? { r0, r1 } : null;
 }
 
 export async function xpswapPrice(
@@ -130,6 +137,7 @@ export async function xpswapPrice(
 
     let best: { price: number; quoteLiqUsd: number } | null = null;
     pairs.forEach((p, i) => {
+      try {
       const reservesHex = details[i * 2];
       const token0Hex = details[i * 2 + 1];
       if (!reservesHex || !token0Hex || p.quote.priceUsd == null) return;
@@ -148,6 +156,9 @@ export async function xpswapPrice(
 
       const price = (quoteAmt * p.quote.priceUsd) / tokenAmt;
       if (!best || quoteLiqUsd > best.quoteLiqUsd) best = { price, quoteLiqUsd };
+      } catch {
+        /* 이 풀만 건너뛰고 다음 후보 평가 */
+      }
     });
 
     return best ? (best as { price: number }).price : null;

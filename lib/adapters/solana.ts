@@ -123,6 +123,9 @@ async function birdeyeTop100(mint: string, apiKey: string): Promise<BirdeyeHolde
     { headers: { "X-API-KEY": apiKey, accept: "application/json", "x-chain": "solana" } },
   );
   if (status === 429) throw new AdapterError("RATE_LIMITED", "Birdeye 호출 한도 초과");
+  if (status === 401 || status === 403) {
+    throw new AdapterError("UPSTREAM_ERROR", "BIRDEYE_API_KEY가 유효하지 않습니다. 키를 확인해주세요.");
+  }
   if (status !== 200 || !body?.success || !body.data?.items) {
     throw new AdapterError("UPSTREAM_ERROR", `Birdeye 응답 오류 (HTTP ${status})`);
   }
@@ -143,6 +146,7 @@ export async function fetchSolanaHolders(mint: string): Promise<HoldersResult> {
   const birdeyeKey = process.env.BIRDEYE_API_KEY;
   let holders: HolderRow[] | null = null;
   let partial: HoldersResult["partial"] = null;
+  let birdeyeFailReason: "rate" | "other" | null = null;
 
   if (birdeyeKey) {
     // Birdeye 무료 티어는 순간 호출 제한이 빡빡함 — 실패하면 RPC 상위 20 경로로 폴백
@@ -157,8 +161,10 @@ export async function fetchSolanaHolders(mint: string): Promise<HoldersResult> {
         usdValue: price.usd != null ? h.ui_amount * price.usd : null,
         tag: null,
       }));
-    } catch {
+    } catch (e) {
       holders = null;
+      birdeyeFailReason =
+        e instanceof AdapterError && e.code === "RATE_LIMITED" ? "rate" : "other";
     }
   }
   if (holders === null) {
@@ -187,9 +193,11 @@ export async function fetchSolanaHolders(mint: string): Promise<HoldersResult> {
     });
     partial = {
       limit: 20,
-      reason: birdeyeKey
-        ? "Birdeye 호출 한도에 잠시 걸려 상위 20개만 표시 중입니다. 약 1분 후 다시 조회하면 상위 100개가 나옵니다."
-        : "Solana 공개 RPC는 상위 20개까지만 제공합니다. BIRDEYE_API_KEY를 설정하면 상위 100개로 확장됩니다.",
+      reason: !birdeyeKey
+        ? "Solana 공개 RPC는 상위 20개까지만 제공합니다. BIRDEYE_API_KEY를 설정하면 상위 100개로 확장됩니다."
+        : birdeyeFailReason === "rate"
+          ? "Birdeye 호출 한도에 잠시 걸려 상위 20개만 표시 중입니다. 약 1분 후 다시 조회하면 상위 100개가 나옵니다."
+          : "Birdeye 조회에 실패해 상위 20개만 표시 중입니다. 문제가 지속되면 BIRDEYE_API_KEY 상태를 확인해주세요.",
     };
   }
 

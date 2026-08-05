@@ -27,7 +27,11 @@ export async function fetchTamsaHolders(address: string): Promise<HoldersResult>
   const { status, body } = await fetchJson<TamsaHoldersResponse>(
     `${BASE}/token/holders/${address.toLowerCase()}?page=1&count=100&decimal=18`,
   );
-  if (status >= 500) throw new AdapterError("UPSTREAM_ERROR", `TAMSA 익스플로러 오류 (HTTP ${status})`);
+  // TAMSA는 미등록 토큰도 HTTP 500 + "not found" 메시지로 반환한다
+  const upstreamMsg = (body as { message?: string } | null)?.message ?? "";
+  if (status >= 500 && !/not found/i.test(upstreamMsg)) {
+    throw new AdapterError("UPSTREAM_ERROR", `TAMSA 익스플로러 오류 (HTTP ${status})`);
+  }
   if (status !== 200 || body?.msg !== "success" || !body.tokenData) {
     throw new AdapterError("TOKEN_NOT_FOUND", "Xphere(TAMSA)에서 해당 토큰을 찾지 못했습니다.");
   }
