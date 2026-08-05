@@ -83,7 +83,7 @@ export default function Page() {
   const [copied, setCopied] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
 
-  const load = useCallback(async (chain: ChainId, address: string) => {
+  const load = useCallback(async (chain: ChainId, address: string): Promise<boolean> => {
     abortRef.current?.abort();
     const ac = new AbortController();
     abortRef.current = ac;
@@ -98,23 +98,36 @@ export default function Page() {
       if (!res.ok) {
         setData(null);
         setError(body?.error ?? { code: "UNKNOWN", message: "요청에 실패했습니다." });
-      } else {
-        setData(body as HoldersResult);
-        setRange("all");
+        return false;
       }
+      setData(body as HoldersResult);
+      setRange("all");
+      return true;
     } catch (e) {
       if ((e as Error).name !== "AbortError") {
         setData(null);
         setError({ code: "NETWORK", message: "네트워크 오류 — 연결을 확인해주세요." });
       }
+      return false;
     } finally {
       if (abortRef.current === ac) setLoading(false);
     }
   }, []);
 
-  // 첫 진입: 키 없이 동작하는 Xphere 데모 토큰을 라이브로 로드
+  // 첫 진입: 키 없이 동작하는 Xphere 데모 토큰을 라이브로 로드.
+  // 콜드 스타트 직후 업스트림이 잠깐 흔들릴 수 있어 실패 시 2초 후 1회 자동 재시도.
   useEffect(() => {
-    void load("xph", CHAINS.xph.demoToken!.address);
+    let cancelled = false;
+    void load("xph", CHAINS.xph.demoToken!.address).then((ok) => {
+      if (!ok && !cancelled) {
+        setTimeout(() => {
+          if (!cancelled) void load("xph", CHAINS.xph.demoToken!.address);
+        }, 2000);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [load]);
 
   const selectChain = (c: ChainConfig) => {
